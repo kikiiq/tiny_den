@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="fox">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tiny Den – focus, tasks, notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap" id="app">
+  <header>
+    <h1>Tiny Den</h1>
+    <div class="themes" role="group" aria-label="Choose a theme">
+      <button data-t="fox" aria-pressed="true">Fox · light</button>
+      <button data-t="cat" aria-pressed="false">Cat · dusk</button>
+      <button data-t="owl" aria-pressed="false">Owl · night</button>
+    </div>
+  </header>
+
+  <section class="stage" id="stage" aria-label="Pomodoro timer">
+    <div class="tabs" role="group" aria-label="Timer mode">
+      <button data-m="work" aria-pressed="true">Focus</button>
+      <button data-m="short" aria-pressed="false">Short Break</button>
+      <button data-m="long" aria-pressed="false">Long Break</button>
+    </div><br>
+    <div class="pet main-pet idle" id="pet-main"></div>
+    <div class="clock">
+      <svg viewBox="0 0 220 220" aria-hidden="true"><circle class="ring-bg" cx="110" cy="110" r="96"/><circle class="ring" id="ring" cx="110" cy="110" r="96"/></svg>
+      <div class="digits" role="timer" aria-live="off"><span id="time">25:00</span><small id="modeLabel">Focus</small></div>
+    </div>
+    <div class="status" id="status" aria-live="polite"></div>
+    <div class="row">
+      <button class="btn main" id="go">Start</button>
+      <button class="btn" id="skip" hidden>Skip</button>
+    </div>
+    <label class="auto"><input type="checkbox" id="auto"> Auto-start next timer</label>
+  </section>
+
+  <div class="panels">
+    <section class="panel" aria-labelledby="th">
+      <div class="phead"><div><h2 id="th">To-do list</h2><div class="bubble">What are we gonna do today? ^^</div></div></div>
+      <div class="add"><input type="text" id="newTask" placeholder="Add a task…" aria-label="New task" maxlength="120" autocomplete="off"><button type="button" class="btn main" id="addBtn" style="min-width:0">Add</button></div>
+      <ul id="list"></ul>
+    </section>
+    <section class="panel" aria-labelledby="nh">
+      <div class="phead"><div><h2 id="nh">Notes</h2><div class="bubble">Jot something down. I'll keep it safe.</div></div></div>
+      <textarea id="notes" aria-label="Notes" placeholder="Ideas, links, things to remember…"></textarea>
+      <div class="saved" id="saved"></div>
+    </section>
+  </div>
+  <footer class="reset">
+    <button type="button" class="btn" id="restart">Restart</button>
+    <div id="restartNote">Erase all tasks, notes and sessions</div>
+  </footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
